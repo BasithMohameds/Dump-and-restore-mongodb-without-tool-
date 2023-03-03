@@ -5,7 +5,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 mongoose.set("strictQuery", true);
-mongoose.connect("mongodb+srv://Basith:basith@cluster0.tklaroe.mongodb.net"),
+mongoose.connect("dburi"),
   () => {
     console.log("database connected..!");
   };
