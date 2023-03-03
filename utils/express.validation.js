@@ -1,19 +1,4 @@
-const { body, validationResult } = require("express-validator");
-
-exports.dumpDataValidation = () => [
-  body("dumpDbUri")
-    .notEmpty()
-    .isString()
-    .withMessage("Please Enter A String..!"),
-  (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ message: errors.array() });
-    }
-    next();
-  },
-];
-
+//uri dump and restore validate using regex
 exports.dumpUriValidation = (uri) => {
   const localRegEx =
     /mongodb:[^a-z A-Z 0-9][//]localhost:27017[/][a-z A-z 0-9]/;

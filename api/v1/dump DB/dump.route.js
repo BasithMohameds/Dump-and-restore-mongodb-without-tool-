@@ -2,20 +2,10 @@ const express = require("express");
 const DumpRoute = express.Router();
 
 const {
-  dumpDbDatabase,
   mongodbDump,
   mongodbRestore,
   showAllDatabaseNames,
 } = require("./dump.service");
-
-const { dumpDataValidation } = require("../../../utils/express.validation");
-
-//mongodb dump and restore server to local
-// DumpRoute.get("/", async (req, res) => {
-//   return await dumpDbDatabase(req).then(({ message, status }) => {
-//     return res.json({ message, status });
-//   });
-// });
 
 //dynamic data dump db server to local
 DumpRoute.post("/dumpdb", async (req, res) => {
