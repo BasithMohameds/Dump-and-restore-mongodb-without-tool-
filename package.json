@@ -1,0 +1,26 @@
+{
+  "name": "db-cleanup-starter",
+  "version": "1.0.0",
+  "description": "Starter template",
+  "main": "dump and restore.js",
+  "scripts": {
+    "start": "nodemon ./app.js",
+    "schedule": "node schedule_pipeline",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oluyemi",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.18.2",
+    "express-validation": "^4.1.0",
+    "express-validator": "^6.15.0",
+    "fs": "0.0.1-security",
+    "mongodb-restore-dump": "^1.0.1",
+    "mongoose": "^6.10.0",
+    "node-cmd": "^5.0.0",
+    "nodemon": "^2.0.20"
+  }
+}
