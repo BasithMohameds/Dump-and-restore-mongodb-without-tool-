@@ -8,7 +8,7 @@ const { dumpUriValidation } = require("../../../utils/validation");
 //show all dumped database name list
 exports.showAllDatabaseNames = async () => {
   try {
-    FolderNames = fs.readdirSync(path.resolve("dump"));
+    const FolderNames = fs.readdirSync(path.resolve("dump"));
     return { message: FolderNames, status: true };
   } catch (err) {
     console.log(err);
