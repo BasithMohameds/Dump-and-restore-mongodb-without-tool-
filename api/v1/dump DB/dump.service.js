@@ -3,7 +3,7 @@ const restore = require("mongodb-restore-dump");
 const path = require("path");
 const fs = require("fs");
 
-const { dumpUriValidation } = require("../../../utils/express.validation");
+const { dumpUriValidation } = require("../../../utils/validation");
 
 //show all dumped database name list
 exports.showAllDatabaseNames = async () => {
