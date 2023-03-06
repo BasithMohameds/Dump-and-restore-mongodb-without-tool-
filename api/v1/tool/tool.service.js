@@ -6,7 +6,7 @@ const fs = require("fs");
 const { dumpUriValidation } = require("../../../utils/validation");
 
 //show all dumped database name list
-exports.showAllDatabaseNames = async () => {
+const showAllDatabaseNames = async () => {
   try {
     const FolderNames = fs.readdirSync(path.resolve("dump"));
     return { message: FolderNames, status: true };
@@ -16,15 +16,15 @@ exports.showAllDatabaseNames = async () => {
   }
 };
 
-//mongodb dump api
-exports.mongodbDump = async ({ body = {} }) => {
+//dump mongodb checking api
+const mongodbDump = async ({ body = {} }) => {
   try {
     const { dumpDbUri } = body;
 
     const validatedDumpUri = dumpUriValidation(dumpDbUri);
 
     if (!dumpDbUri) return { message: "Dump Failed...!", status: false };
-    await spawn("mongodump", ["--uri", dumpDbUri]);
+    const data = await spawn("mongodump", ["--uri", dumpDbUri]);
 
     if (validatedDumpUri) return { message: "Dump Success...!", status: true };
     else return { message: "Dump Failed...!", status: false };
@@ -33,8 +33,8 @@ exports.mongodbDump = async ({ body = {} }) => {
   }
 };
 
-//mongodb restore api
-exports.mongodbRestore = async ({ body = {} }) => {
+//dynamic data restore db server to local
+const mongodbRestore = async ({ body = {} }) => {
   try {
     const { uri, selectedFolder } = body;
 
@@ -56,3 +56,5 @@ exports.mongodbRestore = async ({ body = {} }) => {
     return { message: err.message, status: false };
   }
 };
+
+module.exports = { mongodbDump, mongodbRestore, showAllDatabaseNames };
