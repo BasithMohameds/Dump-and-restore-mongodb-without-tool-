@@ -1,4 +1,4 @@
-//uri dump and restore validate using regex
+//uri dump and restore validation using regex
 exports.dumpUriValidation = (uri) => {
   const localRegEx =
     /mongodb:[^a-z A-Z 0-9][//]localhost:27017[/][a-z A-z 0-9]/;

@@ -7,20 +7,21 @@ const {
   showAllDatabaseNames,
 } = require("./dump.service");
 
-//dynamic data dump db server to local
+//mongodb dump api
 DumpRoute.post("/dumpdb", async (req, res) => {
   return await mongodbDump(req).then(({ message, status }) => {
     return res.json({ message, status });
   });
 });
 
-//dynamic data restore db server to local
+//mongodb restore api
 DumpRoute.post("/restoredb", async (req, res) => {
   return await mongodbRestore(req).then(({ message, status }) => {
     return res.json({ message, status });
   });
 });
 
+//mongodb existing dump database show list
 DumpRoute.get("/folderlist", async (req, res) => {
   return await showAllDatabaseNames().then(({ message, status }) => {
     return res.json({ message, status });

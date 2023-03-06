@@ -16,7 +16,7 @@ exports.showAllDatabaseNames = async () => {
   }
 };
 
-//dump database
+//mongodb dump api
 exports.mongodbDump = async ({ body = {} }) => {
   try {
     const { dumpDbUri } = body;
@@ -24,8 +24,7 @@ exports.mongodbDump = async ({ body = {} }) => {
     const validatedDumpUri = dumpUriValidation(dumpDbUri);
 
     if (!dumpDbUri) return { message: "Dump Failed...!", status: false };
-
-    spawn("mongodump", ["--uri", dumpDbUri]);
+    await spawn("mongodump", ["--uri", dumpDbUri]);
 
     if (validatedDumpUri) return { message: "Dump Success...!", status: true };
     else return { message: "Dump Failed...!", status: false };
@@ -34,7 +33,7 @@ exports.mongodbDump = async ({ body = {} }) => {
   }
 };
 
-//restore database
+//mongodb restore api
 exports.mongodbRestore = async ({ body = {} }) => {
   try {
     const { uri, selectedFolder } = body;
@@ -48,8 +47,6 @@ exports.mongodbRestore = async ({ body = {} }) => {
       uri,
       database: restoreDbName[3],
       from: fromPath,
-      clean: true,
-      onCollectionExists: `overwrite`,
     });
 
     if (validatedRestoreUri)
