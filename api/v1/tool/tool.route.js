@@ -1,5 +1,5 @@
 const express = require("express");
-const ToolRoute = express.Router();
+const toolRoute = express.Router();
 
 const {
   mongodbDump,
@@ -10,12 +10,12 @@ const {
 const { catchAsync } = require("../../../utils/validation");
 
 //mongodb dump api
-ToolRoute.post("/dump", catchAsync(mongodbDump));
+toolRoute.post("/dump", catchAsync(mongodbDump));
 
 //mongodb restore api
-ToolRoute.post("/restore", catchAsync(mongodbRestore));
+toolRoute.post("/restore", catchAsync(mongodbRestore));
 
 //show all dumped database name list
-ToolRoute.get("/list", catchAsync(showAllDatabaseNames));
+toolRoute.get("/list", catchAsync(showAllDatabaseNames));
 
-module.exports = ToolRoute;
+module.exports = toolRoute;

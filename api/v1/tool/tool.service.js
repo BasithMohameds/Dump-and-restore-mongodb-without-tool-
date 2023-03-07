@@ -16,7 +16,7 @@ const showAllDatabaseNames = async () => {
   }
 };
 
-//dump mongodb checking api
+//mongodb dump api
 const mongodbDump = async ({ body = {} }) => {
   try {
     const { dumpDbUri } = body;
@@ -33,7 +33,7 @@ const mongodbDump = async ({ body = {} }) => {
   }
 };
 
-//dynamic data restore db server to local
+//mongodb restore api
 const mongodbRestore = async ({ body = {} }) => {
   try {
     const { uri, selectedFolder } = body;
